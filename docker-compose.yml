@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  web:
+    image: odoo:19.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./odoo:/opt/odoo-source        # Map Source Code Odoo GitHub
+      - ./custom_addons:/mnt/extra-addons # Map Module buatan kita
+    # Override perintah bawaan Docker untuk menjalankan Odoo dari Source Code
+    command: >
+      python3 /opt/odoo-source/odoo-bin
+      --addons-path=/opt/odoo-source/addons,/mnt/extra-addons
+      --db_host=db --db_user=odoo --db_password=odoo
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo

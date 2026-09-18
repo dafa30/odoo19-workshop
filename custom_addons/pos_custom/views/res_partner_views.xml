@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_loyalty" model="ir.ui.view">
+        <field name="name">res.partner.form.loyalty</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_redeem_points"
+                        type="object"
+                        string="Redeem Points"
+                        class="oe_stat_button"
+                        icon="fa-gift"
+                        groups="pos_custom.group_pos_loyalty_manager"
+                        invisible="loyalty_points == 0"/>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="loyalty_points" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

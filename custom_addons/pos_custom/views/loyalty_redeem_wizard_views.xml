@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_loyalty_redeem_wizard_form" model="ir.ui.view">
+        <field name="name">loyalty.redeem.wizard.form</field>
+        <field name="model">loyalty.redeem.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Redeem Loyalty Points">
+                <sheet>
+                    <group string="Customer Info">
+                        <field name="partner_id" readonly="1"/>
+                        <field name="loyalty_points" readonly="1"/>
+                    </group>
+                    <group string="Pilih Reward">
+                        <field name="reward_product_id"
+                               options="{'no_create': True, 'no_open': True}"/>
+                        <field name="product_name" readonly="1"
+                               invisible="not reward_product_id"/>
+                        <field name="points_required" readonly="1"
+                               invisible="not reward_product_id"/>
+                        <field name="points_after" readonly="1"
+                               invisible="not reward_product_id"/>
+                        <field name="notes" placeholder="Catatan opsional..."/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_confirm"
+                            type="object"
+                            string="Konfirmasi Redeem"
+                            class="btn-primary"/>
+                    <button string="Batal" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

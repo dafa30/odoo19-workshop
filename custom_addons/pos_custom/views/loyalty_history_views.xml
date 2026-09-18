@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_loyalty_history_list" model="ir.ui.view">
+        <field name="name">loyalty.point.history.list</field>
+        <field name="model">loyalty.point.history</field>
+        <field name="arch" type="xml">
+            <list string="Loyalty Point History">
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="type" widget="badge"
+                       decoration-success="type == 'earn'"
+                       decoration-danger="type == 'redeem'"/>
+                <field name="points"/>
+                <field name="product_id"/>
+                <field name="pos_order_id"/>
+                <field name="notes"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_loyalty_history_form" model="ir.ui.view">
+        <field name="name">loyalty.point.history.form</field>
+        <field name="model">loyalty.point.history</field>
+        <field name="arch" type="xml">
+            <form string="Loyalty Point History">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="type"/>
+                        <field name="points"/>
+                        <field name="product_id"/>
+                        <field name="pos_order_id"/>
+                        <field name="notes"/>
+                        <field name="date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_loyalty_history" model="ir.actions.act_window">
+        <field name="name">Loyalty Point History</field>
+        <field name="res_model">loyalty.point.history</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu under Point of Sale -->
+    <menuitem id="menu_loyalty_history"
+              name="Loyalty Point History"
+              parent="point_of_sale.menu_point_root"
+              action="action_loyalty_history"
+              sequence="50"/>
+</odoo>

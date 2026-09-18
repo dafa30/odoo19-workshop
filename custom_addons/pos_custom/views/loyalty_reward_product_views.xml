@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_loyalty_reward_product_list" model="ir.ui.view">
+        <field name="name">loyalty.reward.product.list</field>
+        <field name="model">loyalty.reward.product</field>
+        <field name="arch" type="xml">
+            <list string="Reward Products" editable="bottom">
+                <field name="product_id"/>
+                <field name="points_required"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_loyalty_reward_product_form" model="ir.ui.view">
+        <field name="name">loyalty.reward.product.form</field>
+        <field name="model">loyalty.reward.product</field>
+        <field name="arch" type="xml">
+            <form string="Reward Product">
+                <sheet>
+                    <group>
+                        <field name="product_id" options="{'no_create': False}"/>
+                        <field name="points_required"/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_loyalty_reward_product" model="ir.actions.act_window">
+        <field name="name">Reward Products</field>
+        <field name="res_model">loyalty.reward.product</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu under Point of Sale -->
+    <menuitem id="menu_loyalty_reward_product"
+              name="Reward Products"
+              parent="point_of_sale.menu_point_root"
+              action="action_loyalty_reward_product"
+              groups="pos_custom.group_pos_loyalty_manager"
+              sequence="51"/>
+</odoo>

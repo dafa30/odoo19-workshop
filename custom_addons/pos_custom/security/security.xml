@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- 1. Privilege — container yang muncul di User Settings -->
+        <record id="privilege_pos_custom" model="res.groups.privilege">
+            <field name="name">Smart POS &amp; Loyalty Point</field>
+            <field name="sequence">90</field>
+            <field name="category_id" ref="base.module_category_point_of_sale"/>
+        </record>
+
+        <!-- 2. Group Kasir — hanya bisa lihat riwayat poin -->
+        <record id="group_pos_loyalty_user" model="res.groups">
+            <field name="name">Kasir</field>
+            <field name="sequence">10</field>
+            <field name="privilege_id" ref="privilege_pos_custom"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('point_of_sale.group_pos_user'))]"/>
+        </record>
+
+        <!-- 3. Group Manajer — akses penuh termasuk redeem poin -->
+        <record id="group_pos_loyalty_manager" model="res.groups">
+            <field name="name">Manajer</field>
+            <field name="sequence">20</field>
+            <field name="privilege_id" ref="privilege_pos_custom"/>
+            <field name="implied_ids" eval="[(4, ref('group_pos_loyalty_user')), (4, ref('point_of_sale.group_pos_manager'))]"/>
+            <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+    </data>
+</odoo>

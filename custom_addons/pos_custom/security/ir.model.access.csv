@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loyalty_point_history_user,loyalty.point.history user,model_loyalty_point_history,pos_custom.group_pos_loyalty_user,1,0,0,0
+access_loyalty_point_history_manager,loyalty.point.history manager,model_loyalty_point_history,pos_custom.group_pos_loyalty_manager,1,1,1,1
+access_loyalty_reward_product_user,loyalty.reward.product user,model_loyalty_reward_product,pos_custom.group_pos_loyalty_user,1,0,0,0
+access_loyalty_reward_product_manager,loyalty.reward.product manager,model_loyalty_reward_product,pos_custom.group_pos_loyalty_manager,1,1,1,1
+access_loyalty_redeem_wizard_user,loyalty.redeem.wizard user,model_loyalty_redeem_wizard,pos_custom.group_pos_loyalty_user,1,1,1,1
+access_loyalty_redeem_wizard_manager,loyalty.redeem.wizard manager,model_loyalty_redeem_wizard,pos_custom.group_pos_loyalty_manager,1,1,1,1
